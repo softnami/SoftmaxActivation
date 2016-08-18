@@ -1,8 +1,8 @@
 {
-  "name": "advanced-neural-network",
-  "version": "1.0.6",
-  "description": "Artificial neural network for data prediction.",
-  "main": "NeuralNetwork.js",
+  "name": "softmax",
+  "version": "1.0.0",
+  "description": "A JavaScript module to run the Softmax algorithm.",
+  "main": "softmax.js",
   "author": "Hussain Mir Ali",
   "private": true,
   "license": "",
@@ -17,7 +17,6 @@
     "sinon": "^1.17.5",
     "yuidocjs": "^0.9.0"
   },
-  "homepage": "https://github.com/husenxce/NeuralNetwork#readme",
   "directories": {
     "test": "test"
   },
@@ -27,8 +26,5 @@
   "repository": {
     "type": "git",
     "url": "-"
-  },
-  "devDependencies": {
-    "babel-preset-es2015": "^6.13.2"
   }
 }
