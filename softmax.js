@@ -1,6 +1,11 @@
 "use strict";
 
-
+/**
+* This class contains the logic to run the softmax algorightm.
+*
+* @class Softmax
+* @constructor
+*/
 class Softmax {
 
   /**

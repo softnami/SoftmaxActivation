@@ -1,0 +1,109 @@
+{
+    "project": {},
+    "files": {
+        "softmax.js": {
+            "name": "softmax.js",
+            "modules": {},
+            "classes": {
+                "Softmax": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "Softmax": {
+            "name": "Softmax",
+            "shortname": "Softmax",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "softmax.js",
+            "line": 3,
+            "description": "This class contains the logic to run the softmax algorightm.",
+            "is_constructor": 1
+        }
+    },
+    "elements": {},
+    "classitems": [
+        {
+            "file": "softmax.js",
+            "line": 11,
+            "description": "This method serves as the constructor for the Softmax class.",
+            "itemtype": "method",
+            "name": "constructor",
+            "class": "Softmax"
+        },
+        {
+            "file": "softmax.js",
+            "line": 21,
+            "description": "This method serves as the logic for generating the natural exponent matrix in softmax.",
+            "itemtype": "method",
+            "name": "exp_matrix",
+            "params": [
+                {
+                    "name": "_W",
+                    "description": "The matrix to be used as the weights for the exp_matrix.",
+                    "type": "Matrix"
+                },
+                {
+                    "name": "_X",
+                    "description": "The matrix to be used as the input data for the exp_matrix.",
+                    "type": "Matrix"
+                }
+            ],
+            "return": {
+                "description": "Returns the exp_term matrix.",
+                "type": "Matrix"
+            },
+            "class": "Softmax"
+        },
+        {
+            "file": "softmax.js",
+            "line": 45,
+            "description": "This method serves as the logic for hypothesis.",
+            "itemtype": "method",
+            "name": "hypothesis",
+            "params": [
+                {
+                    "name": "exp_term",
+                    "description": "The matrix to be used as the exp_term.",
+                    "type": "Matrix"
+                }
+            ],
+            "return": {
+                "description": "Returns the hypothesis matrix.",
+                "type": "Matrix"
+            },
+            "class": "Softmax"
+        },
+        {
+            "file": "softmax.js",
+            "line": 64,
+            "description": "This method serves as the logic for softmax function.",
+            "itemtype": "method",
+            "name": "process",
+            "params": [
+                {
+                    "name": "X",
+                    "description": "The matrix to be used as the input data.",
+                    "type": "Matrix"
+                },
+                {
+                    "name": "W",
+                    "description": "The matrix to be used as the weights.",
+                    "type": "Matrix"
+                }
+            ],
+            "return": {
+                "description": "Returns the softmax matrix.",
+                "type": "Matrix"
+            },
+            "class": "Softmax"
+        }
+    ],
+    "warnings": []
+}
