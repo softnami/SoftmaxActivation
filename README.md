@@ -26,13 +26,26 @@ Softmax contains to run the softmax algorithm.
 ###Sample usage:
 
 ```javascript
-var mathjs = require('mathjs');
-var Softmax = require('softmax');
 
-var sft = new Softmax();
-var result = sft.process(mathjs.floor(mathjs.random(mathjs.matrix([50, 1]), 0, 5)), (mathjs.random(mathjs.matrix([50, 4]), 0, 1)));//sft.process(X, Weights);
+var sft = new window.Softmax();
+var result = sft.process(math.floor(math.random(math.matrix([50, 1]), 0, 5)), (math.random(math.matrix([50, 4]), 0, 1)));//sft.process(X, Weights);
 
 console.log(result);
 
 ```
 
+```
+<!--index.html-->
+<!doctype html>
+<html>
+  <head>
+  </head>
+  <body >
+        <script src="Softmax/lib/q.js"></script>
+        <script src="Softmax/lib/math.js"></script>
+        <script src="Softmax/softmax.js"></script>
+</body>
+</html>
+
+*/
+```
