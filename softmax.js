@@ -1,5 +1,9 @@
 "use strict";
 
+var window_object = (function(g){
+      return g;
+  }(this));
+
 /**
 * This class contains the logic to run the softmax algorightm.
 *
@@ -13,7 +17,12 @@ class Softmax {
    * @method constructor
    */
   constructor() {
-    this.MathJS = require('mathjs');
+    if(Object.keys(window_object).length === 0){
+        this.MathJS = require('mathjs');
+    }
+    else{
+        this.MathJS = math;
+    }
     this.X = {};
     this.Y = {};
   }
@@ -87,4 +96,8 @@ class Softmax {
 
 }
 
-module.exports = Softmax;
+if(Object.keys(window_object).length === 0){
+    module.exports = Softmax;
+}else{
+    window['Softmax'] = Softmax;
+}
