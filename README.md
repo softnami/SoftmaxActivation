@@ -41,9 +41,9 @@ console.log(result);
   <head>
   </head>
   <body >
-        <script src="Softmax/lib/q.js"></script>
-        <script src="Softmax/lib/math.js"></script>
-        <script src="Softmax/softmax.js"></script>
+        <script src="softmax/lib/q.js"></script>
+        <script src="softmax/lib/math.js"></script>
+        <script src="softmax/softmax.js"></script>
 </body>
 </html>
 

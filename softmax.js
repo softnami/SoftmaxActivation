@@ -37,16 +37,20 @@ class Softmax {
    */
   exp_matrix(_W, _X) {
 
-    let W = (typeof(_W) === "number") ? this.MathJS.matrix([
-      [_W]
-    ]) : this.W;
+    let W = (typeof(_W) === "number") ? this.MathJS.matrix(
+      _W
+    ) : this.W;
     let scope = {
-        x: _X[0],
-        W_transpose: this.MathJS.transpose(W)
+        x: _X,
+        W: (W),
+        max: 0
       },
-      exp_term;
+      exp_term, product;
 
-    exp_term = this.MathJS.eval('e.^(W_transpose.*x)', scope);
+    product = this.MathJS.eval('(x*W)', scope);
+    scope.max = this.MathJS.max(product);
+    scope.product = product;
+    exp_term = this.MathJS.eval('e.^(product-max)', scope);
 
     return exp_term;
   }
@@ -59,11 +63,13 @@ class Softmax {
    * @return {matrix} Returns the hypothesis matrix.
    */
   hypothesis(exp_term) {
+
     let sum = this.MathJS.sum(exp_term);
     let scope = {
       exp_term: exp_term,
       sum: sum
     };
+
     let result = this.MathJS.eval('exp_term.*(1/sum)', scope);
 
     return result;
@@ -79,14 +85,12 @@ class Softmax {
    * @return {matrix} Returns the softmax matrix.
    */
   process(X, W) {
-    let expMatrix = [];
+    let expMatrix;
     this.X = X;
     this.W = W;
 
-    for (let i = 0; i < X.size()[0]; i++) {
-      expMatrix[i] = this.exp_matrix(W, X._data[i])._data[0];
-    }
-
+    expMatrix= this.exp_matrix(W, X);
+    
     let softmaxMatrix = this.hypothesis(expMatrix);
 
     return new Promise((resolve, reject) => {
