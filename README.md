@@ -44,6 +44,8 @@ console.log(result);
         <script src="softmax/lib/q.js"></script>
         <script src="softmax/lib/math.js"></script>
         <script src="softmax/softmax.js"></script>
+         <!--Include the main.js file where you use the algorithm.-->
++        <script src="main.js"></script>
 </body>
 </html>
 
