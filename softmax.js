@@ -64,13 +64,19 @@ class Softmax {
    */
   hypothesis(exp_term) {
 
-    let sum = this.MathJS.sum(exp_term);
+    let sum = this.MathJS.mean(exp_term,0);
     let scope = {
       exp_term: exp_term,
-      sum: sum
+      sum: sum,
+      ones: {},
+      size: sum.size()[0]
     };
 
-    let result = this.MathJS.eval('exp_term.*(1/sum)', scope);
+        scope.ones = this.MathJS.squeeze(this.MathJS.ones(1, scope.exp_term.size()[0]));
+        scope.sum = this.MathJS.eval('sum*ones*size',scope);
+        let result = this.MathJS.eval('exp_term.*(1/(sum))', scope);
+
+        console.log(result);
 
     return result;
   }

@@ -111,7 +111,7 @@ describe('Softmax', function() {
 
    it('should be able process matrices with negative values.', function(done) {     
       X = (mathjs.random(mathjs.matrix([50, 3]), 0, 1)),
-      W = (mathjs.random(mathjs.matrix([3, 50]), -1, 1));   
+      W = (mathjs.random(mathjs.matrix([3, 50]), -50, 0));   
       let flag = false;
      
      softmax.process(X, W).then((data)=>{
