@@ -76,8 +76,6 @@ class Softmax {
         scope.sum = this.MathJS.eval('sum*ones*size',scope);
         let result = this.MathJS.eval('exp_term.*(1/(sum))', scope);
 
-        console.log(result);
-
     return result;
   }
 
