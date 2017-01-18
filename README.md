@@ -2,7 +2,7 @@
 ###[Author: Hussain Mir Ali]
 Softmax contains to run the softmax algorithm.
 
-##External Librarbies Used:
+##External Libraries Used:
 * mathjs License: https://github.com/josdejong/mathjs/blob/master/LICENSE
 * mocha License: https://github.com/mochajs/mocha/blob/master/LICENSE
 * sinon Licencse: https://github.com/sinonjs/sinon/blob/master/LICENSE
@@ -12,19 +12,6 @@ Softmax contains to run the softmax algorithm.
 ##Installation:
 *  Download the project and unzip it.
 *  Copy the 'softmax' folder to your node_modules folder in your project directory.
-*  Require it using 'require('softmax')' in your main JavaScript file.
-*  If you want to reinstall node_modules for this project then run 'sudo npm install -g" in your terminal under the 'softmax' project directory.
-
-##Testing:
-* For unit testing Mocha and Sinon have been used. 
-* On newer computers run the command 'mocha --timeout 50000', the 50000 ms timeout is to give enough time for tests to complete as they might not process before timeout. 
-* On older computers run the command 'mocha --timeout 300000', the 300000 ms timeout is to give enough time for tests to complete as they might not process before timeout on older computers. 
-* If need be more than 300000 ms should be used to run the tests depending on the processing power of the computer. 
-
-
-##Documentation
-*  The documentation is available in the 'out' folder of this project. Open the 'index.html' file under the 'out' folder with Crhome or Firefox.
-*  To generate the documentation run 'yuidoc .' command in the main directory of this project.
 
 ###Sample usage:
 
@@ -54,3 +41,14 @@ console.log(result);
 
 */
 ```
+
+##Testing:
+* For unit testing Mocha and Sinon have been used. 
+* On newer computers run the command 'mocha --timeout 50000', the 50000 ms timeout is to give enough time for tests to complete as they might not process before timeout. 
+* On older computers run the command 'mocha --timeout 300000', the 300000 ms timeout is to give enough time for tests to complete as they might not process before timeout on older computers. 
+* If need be more than 300000 ms should be used to run the tests depending on the processing power of the computer. 
+
+
+##Documentation
+*  The documentation is available in the 'out' folder of this project. Open the 'index.html' file under the 'out' folder with Crhome or Firefox.
+*  To generate the documentation run 'yuidoc .' command in the main directory of this project.
