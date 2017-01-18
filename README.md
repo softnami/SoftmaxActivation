@@ -16,7 +16,10 @@ Softmax contains to run the softmax algorithm.
 *  If you want to reinstall node_modules for this project then run 'sudo npm install -g" in your terminal under the 'softmax' project directory.
 
 ##Testing:
-* For unit testing Mocha and Sinon have been used. Use 'mocha test' to start the test.
+* For unit testing Mocha and Sinon have been used. 
+* On newer computers run the command 'mocha --timeout 50000', the 50000 ms timeout is to give enough time for tests to complete as they might not process before timeout. 
+* On older computers run the command 'mocha --timeout 300000', the 300000 ms timeout is to give enough time for tests to complete as they might not process before timeout on older computers. 
+* If need be more than 300000 ms should be used to run the tests depending on the processing power of the computer. 
 
 
 ##Documentation
