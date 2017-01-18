@@ -82,6 +82,10 @@
     <pre class="code prettyprint linenums">
 &quot;use strict&quot;;
 
+var window_object = (function(g){
+      return g;
+  }(this));
+
 /**
 * This class contains the logic to run the softmax algorightm.
 *
@@ -95,7 +99,12 @@ class Softmax {
    * @method constructor
    */
   constructor() {
-    this.MathJS = require(&#x27;mathjs&#x27;);
+    if(Object.keys(window_object).length === 0){
+        this.MathJS = require(&#x27;mathjs&#x27;);
+    }
+    else{
+        this.MathJS = math;
+    }
     this.X = {};
     this.Y = {};
   }
@@ -110,16 +119,20 @@ class Softmax {
    */
   exp_matrix(_W, _X) {
 
-    let W = (typeof(_W) === &quot;number&quot;) ? this.MathJS.matrix([
-      [_W]
-    ]) : this.W;
+    let W = (typeof(_W) === &quot;number&quot;) ? this.MathJS.matrix(
+      _W
+    ) : this.W;
     let scope = {
-        x: _X[0],
-        W_transpose: this.MathJS.transpose(W)
+        x: _X,
+        W: (W),
+        max: 0
       },
-      exp_term;
+      exp_term, product;
 
-    exp_term = this.MathJS.eval(&#x27;e.^(W_transpose.*x)&#x27;, scope);
+    product = this.MathJS.eval(&#x27;(x*W)&#x27;, scope);
+    scope.max = this.MathJS.max(product);
+    scope.product = product;
+    exp_term = this.MathJS.eval(&#x27;e.^(product-max)&#x27;, scope);
 
     return exp_term;
   }
@@ -132,12 +145,18 @@ class Softmax {
    * @return {matrix} Returns the hypothesis matrix.
    */
   hypothesis(exp_term) {
-    let sum = this.MathJS.sum(exp_term);
+
+    let sum = this.MathJS.mean(exp_term,0);
     let scope = {
       exp_term: exp_term,
-      sum: sum
+      sum: sum,
+      ones: {},
+      size: sum.size()[0]
     };
-    let result = this.MathJS.eval(&#x27;exp_term.*(1/sum)&#x27;, scope);
+
+        scope.ones = this.MathJS.squeeze(this.MathJS.ones(1, scope.exp_term.size()[0]));
+        scope.sum = this.MathJS.eval(&#x27;sum*ones*size&#x27;,scope);
+        let result = this.MathJS.eval(&#x27;exp_term.*(1/(sum))&#x27;, scope);
 
     return result;
   }
@@ -152,14 +171,12 @@ class Softmax {
    * @return {matrix} Returns the softmax matrix.
    */
   process(X, W) {
-    let expMatrix = [];
+    let expMatrix;
     this.X = X;
     this.W = W;
 
-    for (let i = 0; i &lt; X.size()[0]; i++) {
-      expMatrix[i] = this.exp_matrix(W, X._data[i])._data[0];
-    }
-
+    expMatrix= this.exp_matrix(W, X);
+    
     let softmaxMatrix = this.hypothesis(expMatrix);
 
     return new Promise((resolve, reject) =&gt; {
@@ -169,8 +186,11 @@ class Softmax {
 
 }
 
-module.exports = Softmax;
-
+if(Object.keys(window_object).length === 0){
+    module.exports = Softmax;
+}else{
+    window[&#x27;Softmax&#x27;] = Softmax;
+}
     </pre>
 </div>
                     </div>
