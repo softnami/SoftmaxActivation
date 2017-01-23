@@ -72,7 +72,7 @@ class Softmax {
       size: sum.size()[0]
     };
 
-        scope.ones = this.MathJS.squeeze(this.MathJS.ones(1, scope.exp_term.size()[0]));
+        scope.ones = this.MathJS.squeeze(this.MathJS.ones(1, scope.exp_term.size()[1]));
         scope.sum = this.MathJS.eval('sum*ones*size',scope);
         let result = this.MathJS.eval('exp_term.*(1/(sum))', scope);
 
