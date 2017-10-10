@@ -1,21 +1,21 @@
 'use strict';
 
-var Softmax = require('../softmax');
-var assert = require('assert');
-var mathjs = require('mathjs');
-var sinon = require('sinon');
+let Softmax = require('../softmax');
+let assert = require('assert');
+let mathjs = require('mathjs');
+let sinon = require('sinon');
 
 describe('Softmax', function() {
 
-  var softmax =new Softmax();
+  let softmax =new Softmax();
 
   describe('when processing input data and weights.', function() {
 
-    var X = (mathjs.random(mathjs.matrix([50, 3]), 0, 1)),
+    let X = (mathjs.random(mathjs.matrix([50, 3]), 0, 1)),
       W = (mathjs.random(mathjs.matrix([3, 50]), 0, 1));
 
     it('should successfuly call exp_matrix method.', function(done) {
-     var spy = sinon.spy(softmax, "exp_matrix");
+     let spy = sinon.spy(softmax, "exp_matrix");
      
      softmax.process(X, W).then((data)=>{
       assert.equal((data.size()[0]===X.size()[0] && data.size()[1]===W.size()[1] && spy.callCount===1), true);
@@ -26,7 +26,7 @@ describe('Softmax', function() {
     });
   
    it('should successfuly call hypothesis method.', function(done) {
-     var spy = sinon.spy(softmax, "hypothesis");
+     let spy = sinon.spy(softmax, "hypothesis");
      
      softmax.process(X, W).then((data)=>{
       assert.equal((data.size()[0]===X.size()[0] && data.size()[1]===W.size()[1] && spy.callCount===1), true);

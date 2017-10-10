@@ -1,6 +1,6 @@
 "use strict";
 
-var window_object = (function(g){
+let window_object = (function(g){
       return g;
   }(this));
 
