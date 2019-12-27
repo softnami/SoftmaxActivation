@@ -1,13 +1,14 @@
 'use strict';
 
-let Softmax = require('../softmax');
+import {SoftmaxActivation} from '../softmax';
+
 let assert = require('assert');
 let mathjs = require('mathjs');
 let sinon = require('sinon');
 
-describe('Softmax', function() {
+describe('SoftmaxActivation', function() {
 
-  let softmax =new Softmax();
+  let softmax =new SoftmaxActivation();
 
   describe('when processing input data and weights.', function() {
 

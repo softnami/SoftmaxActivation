@@ -1,28 +1,20 @@
-"use strict";
+//Copyright 2016-2020 Hussain Mir Ali
 
-let window_object = (function(g){
-      return g;
-  }(this));
-
+import * as math from 'mathjs';
 /**
 * This class contains the logic to run the softmax algorightm.
 *
-* @class Softmax
+* @class SoftmaxActivation
 * @constructor
 */
-class Softmax {
+export class SoftmaxActivation {
 
   /**
    * This method serves as the constructor for the Softmax class.
    * @method constructor
    */
   constructor() {
-    if(Object.keys(window_object).length === 0){
-        this.MathJS = require('mathjs');
-    }
-    else{
-        this.MathJS = math;
-    }
+    this.MathJS = math;
     this.X = {};
     this.Y = {};
   }
@@ -97,15 +89,9 @@ class Softmax {
     
     let softmaxMatrix = this.hypothesis(expMatrix);
 
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       resolve(softmaxMatrix);
     });
   }
 
-}
-
-if(Object.keys(window_object).length === 0){
-    module.exports = Softmax;
-}else{
-    window['Softmax'] = Softmax;
 }

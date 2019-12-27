@@ -38,7 +38,7 @@
                 
                         <div id="api-tabview-panel">
                             <ul id="api-classes" class="apis classes">
-                                <li><a href="../classes/Softmax.html">Softmax</a></li>
+                                <li><a href="../classes/SoftmaxActivation.html">SoftmaxActivation</a></li>
                             </ul>
                 
                 
@@ -80,31 +80,23 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-&quot;use strict&quot;;
+//Copyright 2016-2020 Hussain Mir Ali
 
-var window_object = (function(g){
-      return g;
-  }(this));
-
+import * as math from &#x27;mathjs&#x27;;
 /**
 * This class contains the logic to run the softmax algorightm.
 *
-* @class Softmax
+* @class SoftmaxActivation
 * @constructor
 */
-class Softmax {
+export class SoftmaxActivation {
 
   /**
    * This method serves as the constructor for the Softmax class.
    * @method constructor
    */
   constructor() {
-    if(Object.keys(window_object).length === 0){
-        this.MathJS = require(&#x27;mathjs&#x27;);
-    }
-    else{
-        this.MathJS = math;
-    }
+    this.MathJS = math;
     this.X = {};
     this.Y = {};
   }
@@ -154,7 +146,7 @@ class Softmax {
       size: sum.size()[0]
     };
 
-        scope.ones = this.MathJS.squeeze(this.MathJS.ones(1, scope.exp_term.size()[0]));
+        scope.ones = this.MathJS.squeeze(this.MathJS.ones(1, scope.exp_term.size()[1]));
         scope.sum = this.MathJS.eval(&#x27;sum*ones*size&#x27;,scope);
         let result = this.MathJS.eval(&#x27;exp_term.*(1/(sum))&#x27;, scope);
 
@@ -179,18 +171,13 @@ class Softmax {
     
     let softmaxMatrix = this.hypothesis(expMatrix);
 
-    return new Promise((resolve, reject) =&gt; {
+    return new Promise((resolve) =&gt; {
       resolve(softmaxMatrix);
     });
   }
 
 }
 
-if(Object.keys(window_object).length === 0){
-    module.exports = Softmax;
-}else{
-    window[&#x27;Softmax&#x27;] = Softmax;
-}
     </pre>
 </div>
                     </div>
