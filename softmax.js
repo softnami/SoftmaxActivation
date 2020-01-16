@@ -29,12 +29,9 @@ export class SoftmaxActivation {
    */
   exp_matrix(_W, _X) {
 
-    let W = (typeof(_W) === "number") ? this.MathJS.matrix(
-      _W
-    ) : this.W;
     let scope = {
-        x: _X,
-        W: (W),
+        x: Array.isArray(_X)?this.MathJS.matrix(_X):_X,
+        W: Array.isArray(_W)?this.MathJS.matrix(_W):_W,
         max: 0
       },
       exp_term, product;
@@ -64,9 +61,9 @@ export class SoftmaxActivation {
       size: sum.size()[0]
     };
 
-        scope.ones = this.MathJS.squeeze(this.MathJS.ones(1, scope.exp_term.size()[1]));
-        scope.sum = this.MathJS.eval('sum*ones*size',scope);
-        let result = this.MathJS.eval('exp_term.*(1/(sum))', scope);
+    scope.ones = this.MathJS.squeeze(this.MathJS.ones(1, scope.exp_term.size()[1]));
+    scope.sum = this.MathJS.eval('sum*ones*size',scope);
+    let result = this.MathJS.eval('exp_term.*(1/(sum))', scope);
 
     return result;
   }
@@ -88,6 +85,8 @@ export class SoftmaxActivation {
     expMatrix= this.exp_matrix(W, X);
     
     let softmaxMatrix = this.hypothesis(expMatrix);
+
+    console.log(softmaxMatrix);
 
     return new Promise((resolve) => {
       resolve(softmaxMatrix);
