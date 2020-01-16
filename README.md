@@ -12,8 +12,8 @@ npm install @softnami/softmax-activation
 ```javascript
 import {SoftmaxActivation} from '@softnami/softmax-activation';
 
-//SoftmaxActivation.process(<input> 2x1, <weights> 2x4);
-SoftmaxActivation.process([[2.12], [1.24]], [[1.23, 3.3, 3.42, 2.34],[0.23, 1.3, 1.22, 1.34]]).then((data)=>{
+//SoftmaxActivation.process(<input> 4x1, <weights> 1x4);
+SoftmaxActivation.process([[2.12], [1.24], [0.12], [3.81]], [[1.23, 3.3, 3.42, 2.34]]).then((data)=>{
     console.log(data);
 });
 ```
